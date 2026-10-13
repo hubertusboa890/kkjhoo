@@ -1,0 +1,34 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("form-kontak");
+
+    if (!form) {
+        console.error("Form kontak tidak ditemukan!");
+        return;
+    }
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const nomorWhatsApp = "6282211604616";
+
+        const nama = document.getElementById("nama").value;
+        const email = document.getElementById("email").value;
+        const telepon = document.getElementById("telepon").value;
+        const minat = document.getElementById("minat").value;
+        const pesan = document.getElementById("pesan").value;
+
+        const isiPesan =
+            `Halo, saya menghubungi melalui website CV.
+Nama Lengkap: ${nama}
+Email: ${email}
+No. Telepon: ${telepon}
+Bidang Minat: ${minat}
+Pesan: ${pesan}`;
+
+        const urlWhatsApp =
+            "https://wa.me/" + nomorWhatsApp +
+            "?text=" + encodeURIComponent(isiPesan);
+
+        window.location.href = urlWhatsApp;
+    });
+});
